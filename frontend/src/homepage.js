@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Carousel from 'react-bootstrap/Carousel';
 import { useRef } from 'react';
-import { fetchActiveMembers ,fetchPopularChannels,handleRating,recognizeDevice} from './functions.js';
+import { fetchActiveMembers,handleRating,recognizeDevice} from './functions.js';
 import ModalBody from 'react-bootstrap/esm/ModalBody.js';
 
 function Homepage({authentication}) {
@@ -48,8 +48,7 @@ function Homepage({authentication}) {
 
     }
 
-
-
+    const navigateTo = useNavigate();
 
     // Sign up functionality
     const [signupShow, setSignupShow] = useState(false);
@@ -88,16 +87,19 @@ function Homepage({authentication}) {
             signupUsername, signupEmail, signupPassword, signupName, signupOccupation, skills: skillsArray, signupAvatar
         }
         try {
-            const response = await axios.post('https://jrg814-4000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai//signup', data);
+            const response = await axios.post('https://psutar9920-4000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/signup', data);
             if (response.status === 200) {
                 authentication(true,signupUsername);
                 navigateTo('/all-channels');
             } 
         } catch (error) {
-            if(error.response.status === 401){
-                setShowSignUp401(true);
-                setSignUp401Message(error.response.data);
-               
+            if (error.response) {
+                if (error.response.status === 401) {
+                    setShowSignUp401(true);
+                    setSignUp401Message(error.response.data);
+                } else {
+                    console.error("Unexpected error: ", error.response.data);
+                }
             }
             else{
                 console.error("Catched axios error: ",error);
@@ -142,7 +144,7 @@ function Homepage({authentication}) {
             loginUsername, loginPassword
         }
         try {
-            const response = await axios.post('https://jrg814-4000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai//login', data);
+            const response = await axios.post('https://psutar9920-4000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/login', data);
             if (response.status === 200) {
                 authentication(true,loginUsername);
                 navigateTo('/all-channels');

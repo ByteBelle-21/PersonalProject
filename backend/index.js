@@ -54,11 +54,6 @@ function useDatabase(){
         }
         console.log('Successfully accessed database Cscommunity');
         createUserTable();
-        createPostsTable();
-        createFilesTable();
-        createChannelsTable();
-        createMessagesTable();
-        createLikesTable();
        
     })
 }
@@ -84,6 +79,95 @@ function createUserTable(){
                             console.log('Successfully created table userTable');
                         })
 }
+
+
+app.post('/signup', (request, response) => {
+    const input_username = request.body.signupUsername;
+    const input_email = request.body.signupEmail;
+    const input_password = request.body.signupPassword;
+    const input_name = request.body.signupName;
+    const input_occupation = request.body.signupOccupation;
+    const input_skills = request.body.skills;
+    const input_avatar = request.body.signupAvatar;
+    database.query(`SELECT * FROM userTable WHERE email=?`,[input_email],(error,result)=>{
+        if(error){
+            response.status(500).send("Server error during sign up1");
+            return;
+        }
+        else{
+            if(result.length!==0){
+                response.status(401).send("Provided email is already associated with other account");
+                
+            }
+            else{
+                database.query(`SELECT * FROM userTable WHERE username=?`,[input_username],(error,result)=>{
+                    if(error){
+                        response.status(500).send("Server error during sign up2");
+                        return;
+                    }
+                    else{
+                        if(result.length!==0){
+                            response.status(401).send("Provided username is already associated with someone's account. Try other username");
+                            
+                        }
+                        else{
+                            database.query(`INSERT INTO userTable (username,email,password,name,occupation,skills,avatar,totalPosts,likes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,[input_username, input_email,input_password,input_name, input_occupation, input_skills,input_avatar,0,0],(error,result)=>{
+                                if(error){
+                                    response.status(500).send("Server error during sign up3 :");
+                                    return;
+                                }
+                                else{
+                                    response.status(200).send("Successfully signed up")
+                                }
+                            })
+                        }
+
+                    }
+                })
+            }
+        }
+    })
+
+});
+
+
+
+app.post('/login', (request, response) => {
+    const input_username = request.body.loginUsername;
+    const input_password = request.body.loginPassword;
+    database.query(`SELECT * FROM userTable WHERE username=?`,[input_username],(error,result)=>{
+        if(error){
+            response.status(500).send("Server error during sign up1");
+            return;
+        }
+        else{
+            if(result.length===0){
+                response.status(401).send("Provided username is not associated with any account");
+                
+            }
+            else{
+                database.query(`SELECT * FROM userTable WHERE username=? and password=?`,[input_username,input_password],(error,result)=>{
+                    if(error){
+                        response.status(500).send("Server error during sign up2");
+                        return;
+                    }
+                    else{
+                        if(result.length===0){
+                            response.status(401).send("Wrong password.Try again");
+                            
+                        }
+                        else{
+                            response.status(200).send("Successfully logged in");
+                        }
+                        
+                    }
+                })
+            }
+        }
+    })
+
+});
+
 
 
 
