@@ -1,0 +1,48 @@
+  services:
+    mysql:
+      image: mysql:5.7
+      container_name: database
+      ports:
+        - 5000:3306
+      environment:
+        MYSQL_ROOT_PASSWORD: abcd1234
+      healthcheck:
+        test: ["CMD", "mysqladmin", "ping", "--silent"]
+        interval: 30s
+        retries: 5
+        start_period: 30s
+        timeout: 20s
+
+    backend:
+      build:
+        context: ./backend
+        dockerfile: Dockerfile
+      container_name: node
+      ports:
+        - 8000:5000
+      volumes:
+        - ./backend:/app
+      depends_on:
+        mysql:
+          condition: service_healthy
+      environment:
+        DB_HOST: mysql
+        DB_PORT: 3306
+        DB_USER: root
+        DB_PASSWORD: abcd1234
+      
+
+    frontend:
+      build:
+        context: ./frontend
+        dockerfile : Dockerfile
+      container_name: react
+      ports:
+        - 3000:3000
+      volumes:
+        - ./frontend:/app
+      depends_on:
+        backend:
+          condition: service_started
+      stdin_open: true
+      tty: true
