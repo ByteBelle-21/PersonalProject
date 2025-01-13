@@ -1,0 +1,43 @@
+
+.sfont{
+    font-size: calc(0.3em + 1vmin); 
+}
+
+.semifont{
+    font-size: calc(0.4em + 1vmin); 
+}
+
+.rfont{
+    font-size: calc(0.5em + 1vmin); 
+}
+
+.mfont{
+    font-size: calc(0.75em + 1vmin); 
+}
+
+
+.lfont{
+    font-size: calc(1em + 1vmin); 
+}
+
+
+@media (min-width:769px) {
+    .navlink{
+        position: fixed;
+        justify-content: flex-end;
+        background-color: black;
+        text-decoration: none !important;
+        width: 100vw !important;
+        left: 0 !important;
+    }
+    
+    .nav-link {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: white !important;
+        padding-left: 2vw !important;
+        padding-right: 1.5vw !important;
+        font-size: calc(0.5em + 1vmin) !important;
+        font-weight: 600 !important;
+    }
+}
+
