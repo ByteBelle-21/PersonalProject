@@ -3,7 +3,7 @@
       image: mysql:5.7
       container_name: database
       ports:
-        - 5000:3306
+        - 3306:3306
       environment:
         MYSQL_ROOT_PASSWORD: abcd1234
       healthcheck:
@@ -19,7 +19,7 @@
         dockerfile: Dockerfile
       container_name: node
       ports:
-        - 8000:5000
+        - "5000:5000"
       volumes:
         - ./backend:/app
       depends_on:
@@ -30,7 +30,8 @@
         DB_PORT: 3306
         DB_USER: root
         DB_PASSWORD: abcd1234
-      
+      restart: on-failure
+      command: node index.js
 
     frontend:
       build:
@@ -38,7 +39,7 @@
         dockerfile : Dockerfile
       container_name: react
       ports:
-        - 3000:3000
+        - "3000:3000"
       volumes:
         - ./frontend:/app
       depends_on:
