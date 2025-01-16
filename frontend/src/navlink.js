@@ -4,17 +4,14 @@ import './Uniformstyle.css';
 function Navlink(){
     return(
     <Nav className='navlink' defaultActiveKey="/home">
-        <Nav.Item>
-            <Nav.Link href="/">Home</Nav.Link>
-        </Nav.Item>
-        <Nav.Item >
-            <Nav.Link eventKey="link-1">Channels</Nav.Link>
+        <Nav.Item className='me-auto'>
+            <Nav.Link style={{marginLeft:'5vw', padding:'0'}} >CScommunity</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-            <Nav.Link eventKey="link-2">Messages</Nav.Link>
+            <Nav.Link >Log In</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-            <Nav.Link eventKey="disabled">Log out</Nav.Link>
+            <Nav.Link className='join-button'>Join Us</Nav.Link>
         </Nav.Item>
     </Nav>
     );
