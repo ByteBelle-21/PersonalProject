@@ -8,9 +8,6 @@ function Navlink(){
             <Nav.Link style={{marginLeft:'5vw', padding:'0'}} >CScommunity</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-            <Nav.Link >Log In</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
             <Nav.Link className='join-button'>Join Us</Nav.Link>
         </Nav.Item>
     </Nav>

@@ -30,8 +30,10 @@
     width: 100% !important;
     left: 0 !important;
     top: 0 !important;
-    height: 2.5vw;
     background-color: white;
+    z-index: 100000;
+    padding-top: 0.5vw;
+    padding-bottom: 0.5vw;
 }
 
 .nav-link {
