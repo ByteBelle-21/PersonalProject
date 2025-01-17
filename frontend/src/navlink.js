@@ -8,8 +8,18 @@ function Navlink(){
             <Nav.Link style={{marginLeft:'5vw', padding:'0'}} >CScommunity</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-            <Nav.Link className='join-button'>Join Us</Nav.Link>
+            <Nav.Link> Search</Nav.Link>
         </Nav.Item>
+        <Nav.Item>
+            <Nav.Link > Channels</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+            <Nav.Link > Messages</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+            <Nav.Link style={{marginRight:'5vw'}} > Log out</Nav.Link>
+        </Nav.Item>
+        
     </Nav>
     );
 }
