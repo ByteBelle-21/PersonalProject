@@ -106,7 +106,7 @@
     font-size: 1.5vw;
 }
 
-.modal{
+.homepage-modal .modal{
     border-radius: 2vw;
     right: 25vw !important;
     height: 60vh !important;
@@ -118,11 +118,12 @@
   
 }
 
-.modal-dialog {
+.homepage-modal .modal-dialog{
+    top: 20vh !important;
     max-width: 50vw;
 }
 
-.modal-body{
+.homepage-modal .modal-body{
     height:60vh !important;
     width:50vw !important;
     z-index:100000 !important;

@@ -8,10 +8,11 @@
     overflow: hidden;
 }
 
-.left-block, .middle-block{
+
+.left-block{
     background-color: white;
-    height: 100%;
     padding: 1vh;
+    height: 100%;
 }
 
 .left-block, .right-block{
@@ -22,9 +23,38 @@
 }
 
 .middle-block{
-    width: 55%;
+    background-color: transparent;
+    width: 58%;
+    height: 100%;
 }
 
+
+.create-post-block{
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.new-post-btn{
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    border-radius: 2vw;
+    background-color:  #6f3be7;
+    border-color:  #6f3be7;
+}
+
+.new-post-btn:hover{
+    background-color: white;
+    color: #6f3be7;
+    border-color:  #6f3be7;
+}
+
+.attach-section{
+    display: flex;
+    flex-direction: row;
+}
 
 .add-channel-btn{
     display: flex;
@@ -106,7 +136,7 @@
     left: 0;
     width: 100%; 
     height: 50%; 
-    background-color: #ff7e5f; 
+    background-color: #b2fcec; 
 }
 
 .profile-img{
@@ -157,6 +187,53 @@
     font-weight: semibold;
 }
 
-.suggestions-list{
-    border-radius: 0 ;
+
+
+
+.view-link:hover{
+    transform: scale(1.1);
 }
+
+.message-link:hover{
+    transform: scale(1.1);
+}
+
+.suggestions::-webkit-scrollbar{
+    width: 0.5vh;
+    background-color:#eef0f7;
+}
+
+.suggestions::-webkit-scrollbar-thumb{
+    background-color:#2F3C7E;
+}
+
+.suggestion-item{
+    border: none;
+    margin-bottom: 0.5vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-channel-title{
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    margin-top: 1vh;
+}
+
+.cancle-channel-btn, .cancle-channel-btn:hover{
+    background-color: white;
+    color: black;
+    border-color: #2F3C7E;
+}
+
+.cancle-channel-btn:hover, .create-channel-btn:hover{
+    transform: scale(1.1);
+}
+
+.create-channel-btn, .create-channel-btn:hover{
+    background-color:#2F3C7E;
+    color: white;
+    border-color: #2F3C7E;
+}
+

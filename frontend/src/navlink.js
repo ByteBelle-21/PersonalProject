@@ -17,6 +17,9 @@ function Navlink(){
             <Nav.Link > Messages</Nav.Link>
         </Nav.Item>
         <Nav.Item>
+            <Nav.Link > Profile</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
             <Nav.Link style={{marginRight:'5vw'}} > Log out</Nav.Link>
         </Nav.Item>
         

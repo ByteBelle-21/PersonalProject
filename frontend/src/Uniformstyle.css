@@ -39,7 +39,6 @@
 .nav-link {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     color: black !important;
-    font-size: calc(0.5em + 1vmin) !important;
     font-weight: 600 !important;
 
 }

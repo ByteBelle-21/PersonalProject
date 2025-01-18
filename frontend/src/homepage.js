@@ -14,9 +14,9 @@ import Carousel from 'react-bootstrap/Carousel';
 import { useRef } from 'react';
 import Alert from 'react-bootstrap/Alert';
 import {recognizeDevice} from './functions.js';
-import ModalBody from 'react-bootstrap/esm/ModalBody.js';
 
-function Homepage({authentication}){
+
+function Homepage(){
 
 
     const navigateTo = useNavigate()
@@ -89,7 +89,7 @@ function Homepage({authentication}){
         try {
             const response = await axios.post('https://jrg814-4000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai//signup', data);
             if (response.status === 200) {
-                authentication(true,signupUsername);
+               
                 navigateTo('/all-channels');
             } 
         } catch (error) {
@@ -126,7 +126,7 @@ function Homepage({authentication}){
         try {
             const response = await axios.post('https://jrg814-4000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai//login', data);
             if (response.status === 200) {
-                authentication(true,loginUsername);
+               
                 navigateTo('/all-channels');
             }     
         } catch (error) {
@@ -147,10 +147,12 @@ function Homepage({authentication}){
                    keyboard={false} 
                    show={signupShow} 
                    onHide={closeSignup} 
-                   centered style={{"--bs-modal-border-radius":'2vw',
+                   className='homepage-modal'
+                   centered 
+                   style={{"--bs-modal-border-radius":'2vw',
                    '--bs-modal-padding':0,
                    '--bs-modal-margin':0}} >
-                <ModalBody>
+                <Modal.Body>
                     <div className="form">
                         <div className='slide-over'>
                             <div className='slide-panel left-slide-over'>
@@ -299,7 +301,7 @@ function Homepage({authentication}){
                             </Carousel>
                         </div> 
                     </div >
-                </ModalBody>
+                </Modal.Body>
            </Modal>
             <Stack direction="horizontal" gap={4} className='welcome-block'>
                 <div className="me-auto">
