@@ -4,6 +4,7 @@ import './App.css';
 import Homepage from './homepage';
 import Navlink from './navlink';
 import Channels from './channels';
+import Messages from './messages';
 
 import { BrowserRouter as Router, Route, Routes,Navigate } from 'react-router-dom';
 
@@ -14,7 +15,7 @@ function App() {
           <Navlink/>
           <div className='subpages'>
             <Routes>
-                <Route path="/" element={<Channels/>}/>
+                <Route path="/" element={<Messages/>}/>
             </Routes>
           </div>
           

@@ -1,0 +1,87 @@
+.message-left-block{
+    width: 20%;
+    height: 100%;
+    background-color: white;
+    overflow-y: hidden;
+}
+
+.direct-message-item{
+    border: none;
+    margin-bottom: 0.5vh;
+    border-radius: 0;
+}
+
+.direct-message-item:hover{
+    background-color: #d1d8fc;
+    cursor: pointer;
+}
+
+
+.connected-user-logo-block{
+    width: 100%;
+    height: fit-content;
+}
+
+
+
+
+
+
+
+.message-right-block {
+    height: 100%;
+    width:20%;
+    overflow-y: hidden;
+}
+
+.connected-user-profile{
+    height: 100%;
+    width: 100%;
+    background-color: white;
+}
+
+.profile-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: none;
+    text-align: center;
+}
+
+.profile-details-item{
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.detail-point{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-skills-item, .activity-item{
+    border: none;
+}
+
+.activity-item{
+    overflow-y: auto;
+}
+
+.activity-item::-webkit-scrollbar{
+    width: 0.5vh;
+    background-color:#eef0f7;
+}
+
+.activity-item::-webkit-scrollbar-thumb{
+    background-color:#d1d8fc;
+}
+
+.activity-list{
+    width: 100%;
+}
+
+.activity-block{
+    flex-grow: 1;
+}
