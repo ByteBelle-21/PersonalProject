@@ -5,6 +5,7 @@ import Homepage from './homepage';
 import Navlink from './navlink';
 import Channels from './channels';
 import Messages from './messages';
+import Profile from './profile';
 
 import { BrowserRouter as Router, Route, Routes,Navigate } from 'react-router-dom';
 
@@ -15,9 +16,9 @@ function App() {
           <Navlink/>
           <div className='subpages'>
             <Routes>
-                <Route path="/" element={<Messages/>}/>
+                <Route path="/" element={<Profile/>}/>
             </Routes>
-          </div>
+          </div>  
           
       </div>
     </Router>

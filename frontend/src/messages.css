@@ -1,3 +1,13 @@
+.messages{
+    background-color: rgb(239, 245, 250) !important;
+    height: 94vh;
+    padding: 2vh;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
 .message-left-block{
     width: 20%;
     height: 100%;

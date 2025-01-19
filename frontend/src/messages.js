@@ -13,7 +13,7 @@ import TextareaAutosize from 'react-textarea-autosize';
 
 function Messages(){
     return(
-        <div className="channels">
+        <div className="messages">
            <div className='message-left-block'>
                 <p className='fw-bold' style={{margin:'1vh'}}>Other Direct Messages</p>
                 <hr></hr>
