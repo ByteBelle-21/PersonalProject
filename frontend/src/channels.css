@@ -141,7 +141,7 @@
 
 .profile-img{
     width: 35%;
-    z-index: 10000;
+    z-index: 1000;
     margin: 0.5vh;
     border: solid 0.5vh white;
 }
@@ -237,3 +237,7 @@
     border-color: #2F3C7E;
 }
 
+.offcanvas-block{
+    padding-top: 6vh;
+    background-color: white;
+}

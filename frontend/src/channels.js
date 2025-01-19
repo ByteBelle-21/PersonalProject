@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
+import Offcanvas from 'react-bootstrap/Offcanvas';
 import Stack from 'react-bootstrap/Stack';
 
 function Channels(){
@@ -29,6 +30,16 @@ function Channels(){
     const closePostModal = ()=>{
         setShowPostModal(false);
     }
+
+    const[showOffCanvas, setShowOffCanvas] = useState(false);
+    const openOffCanvas = ()=>{
+        setShowOffCanvas(true);
+    }
+
+    const closeOffCanvas = ()=>{
+        setShowOffCanvas(false);
+    }
+
 
     return(
         <div className="channels">
@@ -172,7 +183,7 @@ function Channels(){
            </div>
            <div className='middle-block'>
                 <div className='create-post-block'>
-                    <h2>Java Discussion forum</h2>
+                    <h3>Java Discussion forum</h3>
                     <Button className='new-post-btn' onClick={openPostModal}>
                         <span class="material-symbols-outlined" style={{marginRight:'1vh'}}> add</span> 
                         <p style={{margin:'0'}} className='fw-bold'>What's on your mind ?</p>
@@ -311,12 +322,96 @@ function Channels(){
                             </div>
                             <div className="ms-2 me-auto">
                             <div className="fw-bold">sdbv sdcjsdc </div>
-                                <Link className='view-link'>View Profile</Link>
+                                <Link className='view-link' onClick={openOffCanvas}>View Profile</Link>
                             </div>
                             <Link><span class="material-symbols-outlined message-link" style={{fontSize:'1vw'}}>chat_bubble</span></Link>
                         </ListGroup.Item>
-                        
                     </ListGroup>
+                    <Offcanvas 
+                        show={showOffCanvas} 
+                        onHide={closeOffCanvas} 
+                        placement='end' 
+                        name='Enable both scrolling & backdrop'
+                        className='offcanvas-block'>
+                        <Offcanvas.Header closeButton>
+                        <Offcanvas.Title className='fw-bold'>User Profile</Offcanvas.Title>
+                        </Offcanvas.Header>
+                        <Offcanvas.Body>
+                            <ListGroup as="ol" className='connected-user-profile'>
+                                <ListGroup.Item className='profile-item ' as="li">
+                                    <Image src="Group 301.png" className='profile-img' roundedCircle />
+                                    <p className='rfont' style={{margin:'0', fontWeight:'bold'}}>Nitya dfjhj shdfj</p>
+                                    <p style={{fontSize:'medium'}}>ByteBelle</p>
+                                    <p >Nitys is jhfjcherf hf fh f fejhfjhc sbsc jshd cbc sjd c hvsjd vbjdvbj vs vjh </p>
+                                </ListGroup.Item>
+                                <ListGroup.Item as="li"  className='social-media-item'>
+                                    <Stack direction='horizontal' gap={4}>
+                                        <Link >
+                                            <Image  src="facebook.png"  className="social-media-img"  roundedCircle />
+                                        </Link>
+                                        <Link>
+                                            <Image  src="instagram.png"  className="social-media-img"  roundedCircle />
+                                        </Link>
+                                        <Link>
+                                            <Image  src="linkedin.png"  className="social-media-img"  roundedCircle />
+                                        </Link>
+                                    </Stack>
+                                
+                                </ListGroup.Item>
+                                <ListGroup.Item className='profile-skills-item' as="li">
+                                    <hr></hr>
+                                    <p  style={{marginTop:'0'}}>
+                                        • Total Connections : 
+                                        <span style={{fontWeight:'bold', marginLeft:'1vh'}}>6</span>
+                                    </p>
+                                    <p  style={{marginTop:'0'}}>
+                                        • Total Posts : 
+                                        <span style={{fontWeight:'bold' , marginLeft:'1vh'}}>6</span>
+                                    </p>
+                                    <p  style={{marginTop:'0'}}>
+                                        • Skill Set : 
+                                        <span style={{fontWeight:'bold' , marginLeft:'1vh'}}> 
+                                            hrnl. hbjh, hjsd, jhdgsdl , nsgd, sdvchgd, sjghdchd
+                                        </span>
+                                    </p>
+                                    <hr></hr>
+                                </ListGroup.Item>
+                                <ListGroup.Item as="li" className='activity-item'>
+                                    <p  style={{fontWeight:'bold' }}>Browse Tanya's posts</p>
+                                    <div className='activity-block'>
+                                        <ListGroup as="ol" className='activity-list'>
+                                            <ListGroup.Item as="li" className='activity-list-item'>
+                                                <div className="fw-bold" style={{color:'#d84434'}}>sdbv sdcjsdc </div>
+                                                <p style={{fontSize:'small'}} >erjhbgejhf ehrf jvef efhfefkve ergkerj ef erfer .....</p>
+                                            </ListGroup.Item>
+                                            <ListGroup.Item as="li" className='activity-list-item'>
+                                                <div className="fw-bold" style={{color:'#d84434'}}>sdbv sdcjsdc </div>
+                                                <p style={{fontSize:'small'}} >erjhbgejhf ehrf jvef efhfefkve ergkerj ef erfer .....</p>
+                                            </ListGroup.Item>
+                                            <ListGroup.Item as="li" className='activity-list-item'>
+                                                <div className="fw-bold" style={{color:'#d84434'}}>sdbv sdcjsdc </div>
+                                                <p style={{fontSize:'small'}} >erjhbgejhf ehrf jvef efhfefkve ergkerj ef erfer .....</p>
+                                            </ListGroup.Item>
+                                            <ListGroup.Item as="li" className='activity-list-item'>
+                                                <div className="fw-bold" style={{color:'#d84434'}}>sdbv sdcjsdc </div>
+                                                <p style={{fontSize:'small'}} >erjhbgejhf ehrf jvef efhfefkve ergkerj ef erfer .....</p>
+                                            </ListGroup.Item>
+                                            
+                                            <ListGroup.Item as="li" className='activity-list-item'>
+                                                <div className="fw-bold" style={{color:'#d84434'}}>sdbv sdcjsdc </div>
+                                                <p style={{fontSize:'small'}} >erjhbgejhf ehrf jvef efhfefkve ergkerj ef erfer .....</p>
+                                            </ListGroup.Item>
+                                            <ListGroup.Item as="li" className='activity-list-item'>
+                                                <div className="fw-bold" style={{color:'#d84434'}}>sdbv sdcjsdc </div>
+                                                <p style={{fontSize:'small'}} >erjhbgejhf ehrf jvef efhfefkve ergkerj ef erfer .....</p>
+                                            </ListGroup.Item>
+                                        </ListGroup>
+                                    </div>
+                                    
+                                </ListGroup.Item>
+                            </ListGroup>
+                        </Offcanvas.Body>
+                    </Offcanvas>
 
                 </div>
                
