@@ -1,15 +1,77 @@
 import Nav from 'react-bootstrap/Nav';
 import './Uniformstyle.css';
+import './profile.css';
+import Button from 'react-bootstrap/Button';
+import Badge from 'react-bootstrap/Badge';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Image from 'react-bootstrap/Image';
+import { Link } from 'react-router-dom';
+import Modal from 'react-bootstrap/Modal';
+import { useState } from 'react';
+import Form from 'react-bootstrap/Form';
+import Stack from 'react-bootstrap/Stack';
+import Col from 'react-bootstrap/Col';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Row from 'react-bootstrap/Row';
 
 function Navlink(){
+
+        const[showAddMediaModal, setShowAddMediaModal] = useState(false);
+        const openAddMediaModal = ()=>{
+            setShowAddMediaModal(true);
+        }
+    
+        const closeAddMediaModal = ()=>{
+            setShowAddMediaModal(false);
+        }
     return(
     <Nav className='navlink' defaultActiveKey="/home">
         <Nav.Item className='me-auto'>
             <Nav.Link style={{marginLeft:'5vw', padding:'0'}} >CScommunity</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-            <Nav.Link> Search</Nav.Link>
+            <Nav.Link onClick={openAddMediaModal}> Search</Nav.Link>
         </Nav.Item>
+        <Modal 
+            size="md" 
+            show={showAddMediaModal} 
+            onHide={closeAddMediaModal}
+            centered>
+            <Modal.Body>
+                <p className='mfont create-channel-title' >
+                    <span 
+                        class="material-symbols-outlined" 
+                        style={{fontSize:'1.5vw', 
+                                marginRight:'1vh',
+                                color:'#2F3C7E'
+                        }}>
+                        search
+                    </span>
+                    Search Posts, Channels or Other Users
+                </p>
+                <Form.Label htmlFor="inputPassword5">Choose Search Criteria</Form.Label>
+                <Form.Select aria-label="Default select example"  className="mb-3">
+                    <option>Select Criteria</option>
+                    <option value="1">Post</option>
+                    <option value="2">People</option>
+                    <option value="3">Channel</option>
+                </Form.Select>
+                <Form.Label htmlFor="basic-url">What are you looking for ?</Form.Label>
+                <Form.Control type="text" placeholder="Enter what you remember" />
+                 <div className='search-results'>
+                        <hr></hr>
+                        <p className='fw-bold'>Search Results</p>
+                 </div>
+            </Modal.Body>
+            <Modal.Footer style={{border:'none', backgroundColor:'#f0f5fa'}}>
+                <Button className='cancle-channel-btn' onClick={closeAddMediaModal}>
+                    Cancle
+                </Button>
+                <Button className='edit-profile-btn' onClick={closeAddMediaModal}>
+                    Search
+                </Button>
+            </Modal.Footer>
+        </Modal>
         <Nav.Item>
             <Nav.Link > Channels</Nav.Link>
         </Nav.Item>

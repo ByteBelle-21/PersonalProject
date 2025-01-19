@@ -53,4 +53,8 @@
     margin-top: 3vw !important;
 }
 
+.search-results{
+    width: 100%;
+    height: fit-content;
+}
 
