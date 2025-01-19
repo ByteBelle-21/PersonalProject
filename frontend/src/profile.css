@@ -44,8 +44,6 @@
 .large-block{
     height: 100%;
     width: 78%;
-    background-color: white;
-    padding: 1vh;
     display: flex;
     flex-direction: row;
 }
@@ -56,6 +54,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: white;
    
 }
 
@@ -77,6 +76,24 @@
     border: #2F3C7E;
 }
 
+.delete-profile-btn{
+    margin-top: 1vh;
+    display: flex;
+    background-color: #f02132;
+    border:  #f02132;
+}
+
+
+.delete-profile-btn:hover, .delete-modal-btn:hover{
+    transform: scale(1.1);
+    background-color: #f02132;
+    border:  #f02132;
+}
+
+.delete-modal-btn{
+    background-color: #f02132;
+    border:  #f02132;
+}
 
 .profile-details-block{
     flex-grow: 1;
@@ -84,6 +101,8 @@
     padding: 2vh;
     display: flex;
     flex-direction: column;
+    background-color: white;
+    margin-left: 2vh;
 }
 
 .recent-activities-block{
@@ -117,4 +136,18 @@
     text-decoration: none;
      font-size: small;
      font-weight: bold;
+}
+
+.social-media-details{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.actual-social-media-details{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2vh;
+    padding: 1vh;
 }

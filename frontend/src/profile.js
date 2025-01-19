@@ -14,6 +14,25 @@ import Row from 'react-bootstrap/Row';
 
 
 function Profile(){
+
+    const[showDeleteProfileModal, setShowDeleteProfileModal] = useState(false);
+    const openDeleteProfileModal = ()=>{
+        setShowDeleteProfileModal(true);
+    }
+
+    const closeDeleteProfileModal = ()=>{
+        setShowDeleteProfileModal(false);
+    }
+
+    const[showAddMediaModal, setShowAddMediaModal] = useState(false);
+    const openAddMediaModal = ()=>{
+        setShowAddMediaModal(true);
+    }
+
+    const closeAddMediaModal = ()=>{
+        setShowAddMediaModal(false);
+    }
+
     return(
         <div className="profile">
             <div className='profile-left-block'>
@@ -179,17 +198,156 @@ function Profile(){
                     <span class="material-symbols-outlined " style={{marginRight:'1vh'}}> edit </span>
                         Edit Profile
                     </Button>
-                    <br></br>
-                    <Stack direction='horizontal' gap={1} style={{marginTop:'4vh'}}>
-                        <Stack direction='vertical' style={{alignItems:'center'}}>
-                            <span style={{fontWeight:'bold'}}>6</span>
-                            <span>Total Posts</span>
+                    <Button className="delete-profile-btn" onClick={openDeleteProfileModal}>
+                        <span class="material-symbols-outlined " style={{marginRight:'1vh'}}> edit </span>
+                        Delete Profile
+                    </Button>
+                    <Modal 
+                        size="md" 
+                        show={showDeleteProfileModal} 
+                        onHide={closeDeleteProfileModal}
+                        centered>
+                        <Modal.Body>
+                            <p className='mfont create-channel-title' >
+                                <span 
+                                    class="material-symbols-outlined" 
+                                    style={{fontSize:'1.5vw', 
+                                            marginRight:'0.5vh',
+                                            color:'red'}}>
+                                    error
+                                </span>
+                                Delete Your Profile ?
+                            </p>
+                            <p>Remeber, This action <span style={{color:'red', fontWeight:'bold'}}> CANNOT </span> 
+                                be undone. You will loose your data, posts,connections, everything !</p>
+                        </Modal.Body>
+                        <Modal.Footer style={{border:'none', backgroundColor:'#f0f5fa'}}>
+                            <Button className='cancle-channel-btn' onClick={closeDeleteProfileModal}>
+                                Cancle
+                            </Button>
+                            <Button className='delete-modal-btn' onClick={closeDeleteProfileModal}>
+                                Delete
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
+                    <div className='social-media-details'>
+                        <Stack direction='horizontal' gap={1} style={{marginTop:'4vh'}}>
+                            <Stack direction='vertical' style={{alignItems:'center'}}>
+                                <span style={{fontWeight:'bold'}}>6</span>
+                                <span style={{fontSize:'small'}}>Total Posts</span>
+                            </Stack>
+                            <Stack direction='vertical' style={{alignItems:'center'}}>
+                                <span style={{fontWeight:'bold'}}>6</span>
+                                <span style={{fontSize:'small'}}>Total Connections</span>
+                            </Stack>
                         </Stack>
-                        <Stack direction='vertical' style={{alignItems:'center'}}>
-                            <span style={{fontWeight:'bold'}}>6</span>
-                            <span>Total Connections</span>
-                        </Stack>
-                    </Stack>    
+                        <div className='actual-social-media-details'>
+                            <ListGroup as="ol" className='profile-suggestions-list'>
+                                <ListGroup.Item className='suggestion-item' as="li">
+                                    <div className="fw-bold" style={{display:'flex', justifyContent:'space-between'}}>
+                                        Linked Social Media Accounts 
+                                        <Link onClick={openAddMediaModal}>
+                                            <span class="material-symbols-outlined">add</span>
+                                        </Link>
+                                    </div>
+                                    <hr style={{marginBottom:'0'}}></hr>
+                                </ListGroup.Item>
+                                <Modal 
+                                    size="md" 
+                                    show={showAddMediaModal} 
+                                    onHide={closeAddMediaModal}
+                                    centered>
+                                    <Modal.Body>
+                                        <p className='mfont create-channel-title' >
+                                            <span 
+                                                class="material-symbols-outlined" 
+                                                style={{fontSize:'1.5vw', 
+                                                        marginRight:'1vh',
+                                                        color:'#2F3C7E'
+                                                }}>
+                                                person_add
+                                            </span>
+                                            Link New Social Media Account
+                                        </p>
+                                        <p>Remeber, You can link upto 4 social media accounts.</p>
+                                        <Form.Label htmlFor="inputPassword5">Choose Media Type</Form.Label>
+                                        <Form.Select aria-label="Default select example"  className="mb-3">
+                                            <option>Select media</option>
+                                            <option value="1">Instagram</option>
+                                            <option value="2">Facebook</option>
+                                            <option value="3">LinkedIn</option>
+                                            <option value="3">GitHub</option>
+                                            <option value="3">SnapChat</option>
+                                            <option value="3">Twitter</option>
+                                            <option value="3">Youtube</option>
+                                        </Form.Select>
+                                        <Form.Label htmlFor="basic-url">Add URL to your Account</Form.Label>
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Text id="basic-addon3">
+                                            https:
+                                            </InputGroup.Text>
+                                            <Form.Control id="basic-url" aria-describedby="basic-addon3" />
+                                        </InputGroup>
+                                    </Modal.Body>
+                                    <Modal.Footer style={{border:'none', backgroundColor:'#f0f5fa'}}>
+                                        <Button className='cancle-channel-btn' onClick={closeAddMediaModal}>
+                                            Cancle
+                                        </Button>
+                                        <Button className='edit-profile-btn' onClick={closeAddMediaModal}>
+                                            Link Account
+                                        </Button>
+                                    </Modal.Footer>
+                                </Modal>
+                                <ListGroup.Item
+                                    as="li"
+                                    className="d-flex justify-content-between align-items-start suggestion-item">
+                                    <div className="image-container">
+                                        <Image 
+                                            src="linkedin.png" 
+                                            className="top-user-img" 
+                                            roundedCircle 
+                                        />
+                                    </div>
+                                    <div className="ms-2 me-auto">
+                                        <div className="fw-bold">tanya. sdjhjk</div>
+                                    </div>
+                                    <Link><span class="material-symbols-outlined message-link" style={{fontSize:'1vw'}}>delete</span></Link>  
+                                </ListGroup.Item>
+                                <ListGroup.Item
+                                    as="li"
+                                    className="d-flex justify-content-between align-items-start suggestion-item">
+                                    <div className="image-container">
+                                        <Image 
+                                            src="instagram.png" 
+                                            className="top-user-img" 
+                                            roundedCircle 
+                                        />
+                                    </div>
+                                    <div className="ms-2 me-auto">
+                                        <div className="fw-bold">tanya. sdjhjk</div>
+                                    </div>
+                                    <Link><span class="material-symbols-outlined message-link" style={{fontSize:'1vw'}}>delete</span></Link>  
+                                </ListGroup.Item>
+                                <ListGroup.Item
+                                    as="li"
+                                    className="d-flex justify-content-between align-items-start suggestion-item">
+                                    <div className="image-container">
+                                        <Image 
+                                            src="facebook.png" 
+                                            className="top-user-img" 
+                                            roundedCircle 
+                                        />
+                                    </div>
+                                    <div className="ms-2 me-auto">
+                                        <div className="fw-bold">tanya. sdjhjk</div>
+                                    </div>
+                                    <Link><span class="material-symbols-outlined message-link" style={{fontSize:'1vw'}}>delete</span></Link>  
+                                </ListGroup.Item>
+                            </ListGroup>
+                        </div> 
+                    </div> 
+                   
+
                 </div>
                 <div className='profile-details-block'>
                     <div className='user-text-details'>
@@ -280,24 +438,6 @@ function Profile(){
                                     </ListGroup.Item>
                                     <ListGroup.Item
                                         as="li"
-                                        className="d-flex justify-content-between align-items-start  history-item">
-                                        <div className="ms-2 me-auto">
-                                        <div className="fw-bold">Subheading</div>
-                                        ernhvvkergbkeh hkrfh erkehrer w fhfukjf w kwfk.......
-                                        </div>
-                                        <Link className='view-post-link'>View Post</Link>
-                                    </ListGroup.Item>
-                                    <ListGroup.Item
-                                        as="li"
-                                        className="d-flex justify-content-between align-items-start channel-item  history-item">
-                                        <div className="ms-2 me-auto">
-                                        <div className="fw-bold">Subheading</div>
-                                            ernhvvkergbkeh hkrfh erkehrer w fhfukjf w kwfk.......
-                                        </div>
-                                        <Link className='view-post-link'>View Post</Link>
-                                    </ListGroup.Item>
-                                    <ListGroup.Item
-                                        as="li"
                                         className="d-flex justify-content-between align-items-start channel-item history-item">
                                         <div className="ms-2 me-auto">
                                         <div className="fw-bold">Subheading</div>
@@ -332,60 +472,7 @@ function Profile(){
                                         </div>
                                         <Link className='view-post-link'>View Post</Link>
                                     </ListGroup.Item>
-                                    <ListGroup.Item
-                                        as="li"
-                                        className="d-flex justify-content-between align-items-start channel-item history-item">
-                                        <div className="ms-2 me-auto">
-                                        <div className="fw-bold">Subheading</div>
-                                        ernhvvkergbkeh hkrfh erkehrer w fhfukjf w kwfk.......
-                                        </div>
-                                        <Link className='view-post-link'>View Post</Link>
-                                    </ListGroup.Item>
-                                    <ListGroup.Item
-                                        as="li"
-                                        className="d-flex justify-content-between align-items-start channel-item history-item">
-                                        <div className="ms-2 me-auto">
-                                        <div className="fw-bold">Subheading</div>
-                                        ernhvvkergbkeh hkrfh erkehrer w fhfukjf w kwfk.......
-                                        </div>
-                                        <Link className='view-post-link'>View Post</Link>
-                                    </ListGroup.Item>
-                                    <ListGroup.Item
-                                        as="li"
-                                        className="d-flex justify-content-between align-items-start channel-item history-item">
-                                        <div className="ms-2 me-auto">
-                                        <div className="fw-bold">Subheading</div>
-                                        ernhvvkergbkeh hkrfh erkehrer w fhfukjf w kwfk.......
-                                        </div>
-                                        <Link className='view-post-link'>View Post</Link>
-                                    </ListGroup.Item>
-                                    <ListGroup.Item
-                                        as="li"
-                                        className="d-flex justify-content-between align-items-start channel-item history-item">
-                                        <div className="ms-2 me-auto">
-                                        <div className="fw-bold">Subheading</div>
-                                        ernhvvkergbkeh hkrfh erkehrer w fhfukjf w kwfk.......
-                                        </div>
-                                        <Link className='view-post-link'>View Post</Link>
-                                    </ListGroup.Item>
-                                    <ListGroup.Item
-                                        as="li"
-                                        className="d-flex justify-content-between align-items-start channel-item history-item">
-                                        <div className="ms-2 me-auto">
-                                        <div className="fw-bold">Subheading</div>
-                                        ernhvvkergbkeh hkrfh erkehrer w fhfukjf w kwfk.......
-                                        </div>
-                                        <Link className='view-post-link'>View Post</Link>
-                                    </ListGroup.Item>
-                                    <ListGroup.Item
-                                        as="li"
-                                        className="d-flex justify-content-between align-items-start channel-item history-item">
-                                        <div className="ms-2 me-auto">
-                                        <div className="fw-bold">Subheading</div>
-                                        ernhvvkergbkeh hkrfh erkehrer w fhfukjf w kwfk.......
-                                        </div>
-                                        <Link className='view-post-link'>View Post</Link>
-                                    </ListGroup.Item>
+                                    
 
 
                                 </ListGroup>                   
