@@ -16,7 +16,7 @@ function App() {
           <Navlink/>
           <div className='subpages'>
             <Routes>
-                <Route path="/" element={<Profile/>}/>
+                <Route path="/" element={<Homepage/>}/>
             </Routes>
           </div>  
           

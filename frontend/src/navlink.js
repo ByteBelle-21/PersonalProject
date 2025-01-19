@@ -13,19 +13,33 @@ import Stack from 'react-bootstrap/Stack';
 import Col from 'react-bootstrap/Col';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
+import {SignInModal} from './functions.js'
+
 
 function Navlink(){
 
-        const[showAddMediaModal, setShowAddMediaModal] = useState(false);
-        const openAddMediaModal = ()=>{
-            setShowAddMediaModal(true);
-        }
-    
-        const closeAddMediaModal = ()=>{
-            setShowAddMediaModal(false);
-        }
+    const[showAddMediaModal, setShowAddMediaModal] = useState(false);
+    const openAddMediaModal = ()=>{
+        setShowAddMediaModal(true);
+    }
+
+    const closeAddMediaModal = ()=>{
+        setShowAddMediaModal(false);
+    }
+
+
+    const[showNavlinkSignInModal, setShowNavlinkSignInModal] = useState(false);
+    const openNavlinkSignInModal = ()=>{
+        setShowNavlinkSignInModal(true);
+    }
+
+    const closeNavlinkSignInModal = ()=>{
+        setShowNavlinkSignInModal(false);
+    }
+
     return(
     <Nav className='navlink' defaultActiveKey="/home">
+        <SignInModal showSignUpModal={showNavlinkSignInModal} closeSignUpModal={closeNavlinkSignInModal} />
         <Nav.Item className='me-auto'>
             <Nav.Link style={{marginLeft:'5vw', padding:'0'}} >CScommunity</Nav.Link>
         </Nav.Item>
@@ -84,7 +98,9 @@ function Navlink(){
         <Nav.Item>
             <Nav.Link style={{marginRight:'5vw'}} > Log out</Nav.Link>
         </Nav.Item>
-        
+        <Nav.Item>
+            <Nav.Link className='join-button' onClick={openNavlinkSignInModal}>Join Us</Nav.Link>
+        </Nav.Item>  
     </Nav>
     );
 }
