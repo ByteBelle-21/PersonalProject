@@ -1,4 +1,3 @@
-import Container from 'react-bootstrap/esm/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Homepage from './homepage';
@@ -17,6 +16,9 @@ function App() {
           <div className='subpages'>
             <Routes>
                 <Route path="/" element={<Homepage/>}/>
+                <Route path="/channels" element={<Channels />} />
+                <Route path="/messages" element={<Messages />} />
+                <Route path="/profile" element={<Profile />} />
             </Routes>
           </div>  
           

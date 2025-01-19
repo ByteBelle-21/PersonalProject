@@ -9,8 +9,10 @@ import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Stack from 'react-bootstrap/Stack';
+import { useNavigate } from 'react-router-dom';
 
 function Channels(){
+    const navigateTo = useNavigate()
 
     const[showChannelModal, setShowChannnelModal] = useState(false);
     const openChannelModal = ()=>{
@@ -184,10 +186,10 @@ function Channels(){
            <div className='middle-block'>
                 <div className='create-post-block'>
                     <h3>Java Discussion forum</h3>
-                    <Button className='new-post-btn' onClick={openPostModal}>
-                        <span class="material-symbols-outlined" style={{marginRight:'1vh'}}> add</span> 
-                        <p style={{margin:'0'}} className='fw-bold'>What's on your mind ?</p>
-                    </Button>
+                        <Button className='new-post-btn' onClick={openPostModal}>
+                            <span class="material-symbols-outlined" style={{marginRight:'1vh'}}> add</span> 
+                            <p style={{margin:'0'}} className='fw-bold'>What's on your mind ?</p>
+                        </Button>
                     <Modal 
                     size="md" 
                     backdrop="static"
@@ -254,7 +256,7 @@ function Channels(){
                         <p style={{margin:'0', fontWeight:'bold'}}>6</p>
                     </ListGroup.Item>
                     <ListGroup.Item className='list-item' as="li">
-                        <Link className='profile-link'>View Profile</Link>
+                        <Link className='profile-link' onClick={()=> navigateTo('/profile')}>View Profile</Link>
                     </ListGroup.Item>
                 </ListGroup>
                 <div className='suggestions'>

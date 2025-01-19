@@ -39,7 +39,6 @@ export function SignInModal({showSignUpModal, closeSignUpModal}){
 
     }
 
-
     const setActive=()=>{
         const form = document.getElementsByClassName("form");
         form[0].classList.add("active");
@@ -74,25 +73,19 @@ export function SignInModal({showSignUpModal, closeSignUpModal}){
             return;
         }
         closeSignUpModal();
-        const signupAvatar = '/Group 216.png'
+        const signupAvatar = '/unsetProfile.png'
         const data = {
             signupUsername, signupEmail, signupPassword, signupName, signupOccupation, skills: skillsArray, signupAvatar
         }
         try {
-            const response = await axios.post('https://jrg814-4000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai//signup', data);
-            if (response.status === 200) {
-               
-                navigateTo('/all-channels');
+            const response = await axios.post('http://localhost:8000/signup', data);
+            if (response.status === 200) {    
+                console.log('successfully signIn');
             } 
         } catch (error) {
-            if(error.response.status === 401){
-                setShowSignUp401(true);
-                setSignUp401Message(error.response.data);
-               
-            }
-            else{
+        
                 console.error("Catched axios error: ",error);
-            }
+            
         }
       
     }
@@ -116,9 +109,8 @@ export function SignInModal({showSignUpModal, closeSignUpModal}){
             loginUsername, loginPassword
         }
         try {
-            const response = await axios.post('https://jrg814-4000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai//login', data);
+            const response = await axios.post('http:localhost:3000/login', data);
             if (response.status === 200) {
-               
                 navigateTo('/all-channels');
             }     
         } catch (error) {
